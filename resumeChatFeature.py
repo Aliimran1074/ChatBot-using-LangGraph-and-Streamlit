@@ -1,7 +1,13 @@
 import streamlit as st
 from langgraph_backend import chatbot
 from langchain_core.messages import HumanMessage
+import uuid
 
+
+# utility functions
+def generate_thread_function():
+    thread_id=uuid.uuid4()
+    return thread_id
 
 CONFIG = {
     "configurable": {
@@ -12,6 +18,12 @@ CONFIG = {
 
 if "message_history" not in st.session_state:
     st.session_state["message_history"] = []
+
+
+# add side bar
+st.sidebar.title('LangGraph Chatbot')
+st.sidebar.button('New Chat')
+st.sidebar.header('My Conversation') 
 
 
 # Display previous messages

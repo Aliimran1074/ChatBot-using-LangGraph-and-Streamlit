@@ -28,3 +28,24 @@ graph.add_node('chatNode',chatFunction)
 graph.add_edge(START,'chatNode')
 graph.add_edge('chatNode',END)
 chatbot=graph.compile(checkpointer=checkPointer)
+
+for message_chunk, metadata in chatbot.stream(
+    {
+        "messages": [
+            HumanMessage(content="Cricket World Cup 2011 Team Pakistan")
+        ]
+    },
+    config={
+        "configurable": {
+            "thread_id": "1"
+        }
+    },
+    stream_mode="messages"
+):
+    print(message_chunk.content)
+
+    if message_chunk.content:
+        print(message_chunk.content, end=" ", flush=True)
+
+    
+# print(type(stream))
