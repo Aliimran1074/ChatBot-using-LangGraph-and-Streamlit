@@ -47,5 +47,17 @@ for message_chunk, metadata in chatbot.stream(
     if message_chunk.content:
         print(message_chunk.content, end=" ", flush=True)
 
-    
+# CONFIG = {
+#     "configurable": {
+#         "thread_id": "thread_1"
+#     }
+# }
+
+# chatbot.invoke(
+# {"messages": [HumanMessage(content="Hi my name is Ali")]},
+#     config=CONFIG,
+#     stream_mode="messages")
+
+
+# print(chatbot.get_state(config=CONFIG).values['messages']) 
 # print(type(stream))
